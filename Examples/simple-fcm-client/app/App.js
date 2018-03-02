@@ -34,6 +34,12 @@ class MainPage extends Component {
   }
 
   async componentDidMount(){
+    FCM.createNotificationChannel({
+      id: 'default',
+      name: 'Default',
+      description: 'used for example',
+      priority: 'high'
+    })
     registerAppListener(this.props.navigation);
     FCM.getInitialNotification().then(notif => {
       this.setState({
@@ -68,8 +74,9 @@ class MainPage extends Component {
     FCM.presentLocalNotification({
       vibrate: 500,
       title: 'Hello',
-      body: 'Click me to detail page,',
-      big_text: 'Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text Large Text ',
+      channel: 'default',
+      body: 'Test Notification',
+      big_text: 'i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large',
       priority: "high",
       sound: "bell.mp3",
       large_icon: "https://image.freepik.com/free-icon/small-boy-cartoon_318-38077.jpg",
